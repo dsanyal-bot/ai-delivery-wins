@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Delivery Wins | June 2026</title>
+  <style>
+    /* ── Salesforce palette ─────────────────────────────────────────── */
+    :root {
+      --sf-blue:       #0176D3;
+      --sf-blue-dark:  #014486;
+      --sf-blue-light: #E8F4FE;
+      --sf-teal:       #06A59A;
+      --sf-teal-light: #E4F6F5;
+      --sf-navy:       #032D60;
+      --sf-grey-bg:    #F3F3F3;
+      --sf-grey-border:#D8D8D8;
+      --sf-text:       #1B1B1B;
+      --sf-muted:      #5E5E5E;
+      --sf-white:      #FFFFFF;
+      --sf-highlight:  #FFB75D;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Salesforce Sans", "Helvetica Neue", Arial, sans-serif;
+      background: var(--sf-grey-bg);
+      color: var(--sf-text);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── Wrapper ─────────────────────────────────────────────────────── */
+    .wrapper {
+      max-width: 760px;
+      margin: 36px auto;
+      background: var(--sf-white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+    }
+
+    /* ── Header ──────────────────────────────────────────────────────── */
+    .header {
+      background: linear-gradient(135deg, var(--sf-navy) 0%, var(--sf-blue-dark) 60%, var(--sf-blue) 100%);
+      padding: 40px 40px 32px;
+      color: var(--sf-white);
+    }
+
+    .header .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--sf-highlight);
+      margin-bottom: 10px;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .header .sub {
+      font-size: 14px;
+      opacity: 0.80;
+    }
+
+    .header .meta {
+      margin-top: 18px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .header .meta-chip {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* ── Intro banner ────────────────────────────────────────────────── */
+    .intro-banner {
+      background: var(--sf-blue-light);
+      border-left: 4px solid var(--sf-blue);
+      padding: 16px 40px;
+      font-size: 14px;
+      color: var(--sf-blue-dark);
+      font-style: italic;
+    }
+
+    /* ── Stats row ───────────────────────────────────────────────────── */
+    .stats-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--sf-grey-border);
+    }
+
+    .stat-box {
+      flex: 1;
+      text-align: center;
+      padding: 22px 12px;
+      border-right: 1px solid var(--sf-grey-border);
+    }
+
+    .stat-box:last-child { border-right: none; }
+
+    .stat-box .stat-num {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--sf-blue);
+      line-height: 1;
+    }
+
+    .stat-box .stat-label {
+      font-size: 11px;
+      color: var(--sf-muted);
+      margin-top: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    /* ── Section heading ─────────────────────────────────────────────── */
+    .section-heading {
+      padding: 28px 40px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-heading .icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--sf-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section-heading .icon svg { fill: white; width: 16px; height: 16px; }
+
+    .section-heading h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--sf-navy);
+    }
+
+    /* ── Win cards ───────────────────────────────────────────────────── */
+    .cards {
+      padding: 16px 40px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid var(--sf-grey-border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-header .author-chip {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+
+    .card-header .cloud-tag {
+      font-size: 11px;
+      color: var(--sf-muted);
+      font-weight: 500;
+    }
+
+    .card-header .card-title {
+      margin-left: auto;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--sf-blue-dark);
+      text-align: right;
+    }
+
+    /* author colour theming */
+    .card.rajan   .card-header { background: #EFF7FF; }
+    .card.rajan   .author-chip { background: #BFE0FB; color: #014486; }
+    .card.manjari .card-header { background: #EDFBFA; }
+    .card.manjari .author-chip { background: #B3EDE9; color: #015C56; }
+    .card.kalyan  .card-header { background: #FFF5E9; }
+    .card.kalyan  .author-chip { background: #FFD9A0; color: #7A4400; }
+
+    .card-body {
+      padding: 14px 18px 16px;
+    }
+
+    .card-body .rows {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .card-row .row-label {
+      flex-shrink: 0;
+      width: 90px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--sf-muted);
+      padding-top: 2px;
+    }
+
+    .card-row .row-text {
+      font-size: 13.5px;
+      color: var(--sf-text);
+      flex: 1;
+    }
+
+    /* metrics pills */
+    .metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .metric-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--sf-blue);
+      color: white;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .metric-pill.teal  { background: var(--sf-teal); }
+    .metric-pill.navy  { background: var(--sf-navy); }
+    .metric-pill.amber { background: #B85C00; }
+
+    /* divider */
+    .divider {
+      height: 1px;
+      background: var(--sf-grey-border);
+      margin: 0 40px;
+    }
+
+    /* ── Footer ──────────────────────────────────────────────────────── */
+    .footer {
+      background: var(--sf-navy);
+      color: rgba(255,255,255,0.7);
+      padding: 22px 40px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer strong { color: white; }
+    .footer .sf-logo {
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="eyebrow">Own Our Narrative · AI Delivery Wins Post Series</div>
+    <h1>AI Delivery Wins<br>June 2026</h1>
+    <div class="sub">Enterprise AI Delivery &amp; Transformation Org · APAC</div>
+    <div class="meta">
+      <span class="meta-chip">5 Wins This Month</span>
+      <span class="meta-chip">3 Contributors</span>
+      <span class="meta-chip">HCC · Service Cloud · T&amp;P APAC</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro-banner">
+    Our AI Delivery Leads are turning real delivery work into org-wide proof points. These are the stories that make our impact visible — and leadership takes notice.
+  </div>
+
+  <!-- STATS ROW -->
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">HCC Planned Release<br>Adoption · R264</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">96.3%</div>
+      <div class="stat-label">AI Tool Adoption<br>HCC · Q1 FY27</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">+32%</div>
+      <div class="stat-label">PRs per Developer<br>Service Cloud</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">~40</div>
+      <div class="stat-label">EMs Enabled<br>AI Flow Optimizer</div>
+    </div>
+  </div>
+
+  <!-- WIN 1: RAJAN -->
+  <div class="section-heading">
+    <div class="icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7L2 14l10 5 10-5-10-5z"/></svg>
+    </div>
+    <h2>Win #1 — AI Flow Optimizer Workshop</h2>
+  </div>
+  <div class="cards">
+    <div class="card rajan">
+      <div class="card-header">
+        <span class="author-chip">Rajan Julka</span>
+        <span class="cloud-tag">T&amp;P APAC · EMpact Program</span>
+        <span class="card-title">May 2026</span>
+      </div>
+      <div class="card-body">
+        <div class="rows">
+          <div class="card-row">
+            <span class="row-label">The Problem</span>
+            <span class="row-text">Engineering Managers in T&amp;P had no data-driven view to identify delivery bottlenecks — relying on gut feel, not real flow data from GUS and Git.</span>
+          </div>
+          <div class="card-row">
+            <span class="row-label">What We Did</span>
+            <span class="row-text">Facilitated the AI Flow Optimizer workshop at EMpact (Hyderabad, May 13–14) for ~40 EMs — using a Claude Code skill that pulls live GUS + Git data to generate a custom flow dashboard per team, then guides EMs through bottleneck identification, root cause analysis, and designing a concrete improvement experiment.</span>
+          </div>
+          <div class="card-row">
+            <span class="row-label">The Outcome</span>
+            <span class="row-text">
+              EMs who previously spent hours manually pulling delivery data now get their team's full flow dashboard in minutes — walking away with data-backed experiment designs directly tied to 3X productivity goals.
+              <div class="metrics">
+                <span class="metric-pill">~40 EMs enabled</span>
+                <span class="metric-pill teal">Hours → Minutes</span>
+                <span class="metric-pill navy">Data-backed experiments</span>
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WIN 2 & 3: MANJARI -->
+  <div class="section-heading">
+    <div class="icon">
+      <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    </div>
+    <h2>Wins #2 &amp; #3 — HCC · Hyperscale Core CRM</h2>
+  </div>
+  <div class="cards">
+
+    <!-- Manjari Win 1: Release Planning Excellence -->
+    <div class="card manjari">
+      <div class="card-header">
+        <span class="author-chip">Manjari Kumar</span>
+        <span class="cloud-tag">HCC · Release Planning</span>
+        <span class="card-title">R264</span>
+      </div>
+      <div class="card-body">
+        <div class="rows">
+          <div class="card-row">
+            <span class="row-label">The Problem</span>
+            <span class="row-text">HCC teams had inconsistent GUS hygiene and sprint expectations — no structured release planning approach meant AI productivity couldn't be measured or enabled at scale.</span>
+          </div>
+          <div class="card-row">
+            <span class="row-label">What We Did</span>
+            <span class="row-text">Authored the Release Planning Excellence framework, personally briefed every Scrum Lead, and institutionalized it into the monthly Eng360 cadence — building the clean data foundation that the Release Planning Agent depends on.</span>
+          </div>
+          <div class="card-row">
+            <span class="row-label">The Outcome</span>
+            <span class="row-text">
+              100% of HCC teams on Planned Release for R264 — every sprint, every team. Clean GUS data now powers AI-assisted planning and unlocked the ability to build and ship the Release Planning Agent.
+              <div class="metrics">
+                <span class="metric-pill teal">100% Planned Release · R264</span>
+                <span class="metric-pill">Release Planning Agent unlocked</span>
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manjari Win 2: AI Champions Circle -->
+    <div class="card manjari">
+      <div class="card-header">
+        <span class="author-chip">Manjari Kumar</span>
+        <span class="cloud-tag">HCC · AI Champions Circle</span>
+        <span class="card-title">Q1 FY27</span>
+      </div>
+      <div class="card-body">
+        <div class="rows">
+          <div class="card-row">
+            <span class="row-label">The Problem</span>
+            <span class="row-text">HCC had no structured mechanism for grassroots AI adoption — tool enablement, risk awareness, and team agreements were inconsistent across AMER and APAC with no accountability at team level.</span>
+          </div>
+          <div class="card-row">
+            <span class="row-label">What We Did</span>
+            <span class="row-text">Launched and operationalized the HCC AI Champions Circle from scratch (March 11, 2026) — designed the nomination framework, onboarded 18 Champions across AMER + APAC, embedded them as owners of AI tool adoption (Claude, Cursor, PRizm), AI Risk Registers, and Team Agreement refreshes. Institutionalized a 15-min AI Demo showcase in monthly Open Mic.</span>
+          </div>
+          <div class="card-row">
+            <span class="row-label">The Outcome</span>
+            <span class="row-text">
+              AI tool adoption jumped 9.5 points in one quarter, with a simultaneous surge in developer output — proving that structured, accountable adoption programs deliver compounding results.
+              <div class="metrics">
+                <span class="metric-pill teal">86.8% → 96.3% AI Adoption</span>
+                <span class="metric-pill">+30% work items per developer</span>
+                <span class="metric-pill navy">18 Champions · AMER + APAC</span>
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WIN 4 & 5: KALYAN -->
+  <div class="section-heading">
+    <div class="icon">
+      <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    </div>
+    <h2>Wins #4 &amp; #5 — Service Cloud · ITSM</h2>
+  </div>
+  <div class="cards">
+
+    <!-- Kalyan Win 1: Scrum Agent -->
+    <div class="card kalyan">
+      <div class="card-header">
+        <span class="author-chip">Kalyan Vandana</span>
+        <span class="cloud-tag">Service Cloud · ITSM · Scrum Agent</span>
+        <span class="card-title">May 27 · Tech COO Town Hall</span>
+      </div>
+      <div class="card-body">
+        <div class="rows">
+          <div class="card-row">
+            <span class="row-label">The Problem</span>
+            <span class="row-text">ITSM scrum teams spent 15–20 min per standup manually pulling GUS status, blockers, and context across multiple tools — causing context-switching overhead and inconsistent sprint visibility.</span>
+          </div>
+          <div class="card-row">
+            <span class="row-label">What We Did</span>
+            <span class="row-text">Partnered with the ITSM engineering team to build and deploy the Scrum Agent — a Claude Code-powered agent that automates daily standups by pulling live GUS data, surfacing blockers, and delivering structured sprint intelligence directly in Slack.</span>
+          </div>
+          <div class="card-row">
+            <span class="row-label">The Outcome</span>
+            <span class="row-text">
+              Standup prep reduced from 15–20 minutes to minutes. The Scrum Agent was featured at the Tech COO Town Hall (May 27) as a flagship 3X productivity example — org-wide leadership visibility for APAC AI Delivery.
+              <div class="metrics">
+                <span class="metric-pill amber">15–20 min → Minutes</span>
+                <span class="metric-pill">Featured · Tech COO Town Hall</span>
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kalyan Win 2: Service Cloud 3X -->
+    <div class="card kalyan">
+      <div class="card-header">
+        <span class="author-chip">Kalyan Vandana</span>
+        <span class="cloud-tag">Service Cloud · 3X AI Adoption</span>
+        <span class="card-title">Oct 2025 → Apr 2026</span>
+      </div>
+      <div class="card-body">
+        <div class="rows">
+          <div class="card-row">
+            <span class="row-label">The Problem</span>
+            <span class="row-text">Service Cloud had 98% AI tool adoption in FY26 — but adoption without outcomes is a vanity metric. Velocity gains were happening in silos, invisible to leadership and disconnected from the 3X narrative.</span>
+          </div>
+          <div class="card-row">
+            <span class="row-label">What We Did</span>
+            <span class="row-text">Redesigned how AI impact gets measured, amplified, and owned — embedding AI experimentation as a standing agenda item at Ops Reviews and Staff meetings, institutionalizing recognition of AI contributors, and partnering with Engineering and Product leadership to make the 3X story visible at every altitude.</span>
+          </div>
+          <div class="card-row">
+            <span class="row-label">The Outcome</span>
+            <span class="row-text">
+              Service Cloud reached 100% AI tool adoption. Developer throughput surged with measurable velocity gains tracked across the full org — surfaced at the Tech COO Town Hall as org-wide proof points.
+              <div class="metrics">
+                <span class="metric-pill amber">100% AI Tool Adoption</span>
+                <span class="metric-pill">+32% PRs per Developer</span>
+                <span class="metric-pill navy">+44% Reviews per Developer</span>
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <strong>AI Delivery Wins Post Series</strong> · Part of <strong>Own Our Narrative</strong> · V2MOM FY27<br>
+      Enterprise AI Delivery &amp; Transformation Org · APAC (Bangalore &amp; Hyderabad)
+    </div>
+    <div class="sf-logo">Salesforce</div>
+  </div>
+
+</div>
+</body>
+</html>
