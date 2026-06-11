@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Delivery Wins | June 2026</title>
   <style>
-    /* ── Salesforce palette ─────────────────────────────────────────── */
     :root {
       --sf-blue:       #0176D3;
       --sf-blue-dark:  #014486;
@@ -13,280 +12,432 @@
       --sf-teal:       #06A59A;
       --sf-teal-light: #E4F6F5;
       --sf-navy:       #032D60;
-      --sf-grey-bg:    #F3F3F3;
-      --sf-grey-border:#D8D8D8;
+      --sf-grey-bg:    #EEF2F7;
+      --sf-grey-border:#DDDBDA;
       --sf-text:       #1B1B1B;
       --sf-muted:      #5E5E5E;
       --sf-white:      #FFFFFF;
-      --sf-highlight:  #FFB75D;
+      --sf-gold:       #FFB75D;
+      --sf-amber:      #DD7A01;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: "Salesforce Sans", "Helvetica Neue", Arial, sans-serif;
-      background: var(--sf-grey-bg);
+      background-color: var(--sf-grey-bg);
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1.2' fill='%230176D3' opacity='0.07'/%3E%3C/svg%3E");
       color: var(--sf-text);
       font-size: 15px;
       line-height: 1.6;
     }
 
-    /* ── Wrapper ─────────────────────────────────────────────────────── */
     .wrapper {
-      max-width: 760px;
-      margin: 36px auto;
+      max-width: 780px;
+      margin: 40px auto;
       background: var(--sf-white);
-      border-radius: 10px;
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+      box-shadow: 0 12px 48px rgba(1, 48, 96, 0.18);
     }
 
-    /* ── Header ──────────────────────────────────────────────────────── */
+    /* ─── HEADER ─────────────────────────────────────────────────────── */
     .header {
-      background: linear-gradient(135deg, var(--sf-navy) 0%, var(--sf-blue-dark) 60%, var(--sf-blue) 100%);
-      padding: 40px 40px 32px;
-      color: var(--sf-white);
+      position: relative;
+      background: linear-gradient(145deg, #010E22 0%, #021A3A 30%, var(--sf-navy) 60%, #01529D 85%, var(--sf-blue) 100%);
+      padding: 50px 44px 0;
+      color: white;
+      overflow: hidden;
     }
 
-    .header .eyebrow {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1.8px;
+    /* dot grid overlay */
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23ffffff' opacity='0.08'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* network / AI graph decoration — top right */
+    .header-deco {
+      position: absolute;
+      right: -30px;
+      top: -20px;
+      opacity: 0.09;
+      pointer-events: none;
+    }
+
+    .header-content { position: relative; z-index: 1; }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: var(--sf-highlight);
-      margin-bottom: 10px;
+      color: var(--sf-gold);
+      margin-bottom: 14px;
+    }
+
+    .eyebrow-line {
+      display: inline-block;
+      width: 24px;
+      height: 2px;
+      background: var(--sf-gold);
+      border-radius: 1px;
     }
 
     .header h1 {
-      font-size: 28px;
-      font-weight: 700;
-      line-height: 1.25;
-      margin-bottom: 8px;
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    .header h1 em {
+      font-style: normal;
+      color: var(--sf-gold);
     }
 
     .header .sub {
-      font-size: 14px;
-      opacity: 0.80;
+      font-size: 13px;
+      opacity: 0.72;
+      margin-bottom: 26px;
     }
 
     .header .meta {
-      margin-top: 18px;
       display: flex;
-      gap: 20px;
+      gap: 10px;
       flex-wrap: wrap;
+      margin-bottom: 40px;
     }
 
-    .header .meta-chip {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.25);
+    .meta-chip {
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.18);
       border-radius: 20px;
-      padding: 4px 14px;
-      font-size: 12px;
+      padding: 5px 15px;
+      font-size: 11.5px;
       font-weight: 500;
     }
 
-    /* ── Intro banner ────────────────────────────────────────────────── */
-    .intro-banner {
+    /* wave SVG bottom of header */
+    .header-wave { display: block; width: 100%; margin-bottom: -2px; }
+
+    /* ─── INTRO ──────────────────────────────────────────────────────── */
+    .intro {
       background: var(--sf-blue-light);
-      border-left: 4px solid var(--sf-blue);
-      padding: 16px 40px;
-      font-size: 14px;
-      color: var(--sf-blue-dark);
-      font-style: italic;
+      border-bottom: 1px solid #C8E0F5;
+      padding: 26px 44px 26px 56px;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* ── Stats row ───────────────────────────────────────────────────── */
+    .intro::before {
+      content: '\201C';
+      position: absolute;
+      left: 30px;
+      top: 8px;
+      font-size: 80px;
+      color: var(--sf-blue);
+      opacity: 0.13;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    .intro p {
+      font-size: 14.5px;
+      color: var(--sf-blue-dark);
+      font-style: italic;
+      line-height: 1.75;
+    }
+
+    /* ─── STATS ──────────────────────────────────────────────────────── */
     .stats-row {
       display: flex;
-      gap: 0;
       border-bottom: 1px solid var(--sf-grey-border);
     }
 
     .stat-box {
       flex: 1;
       text-align: center;
-      padding: 22px 12px;
+      padding: 22px 8px 18px;
       border-right: 1px solid var(--sf-grey-border);
+      position: relative;
+      overflow: hidden;
     }
 
     .stat-box:last-child { border-right: none; }
 
-    .stat-box .stat-num {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--sf-blue);
-      line-height: 1;
+    /* colored bottom accent */
+    .stat-box::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: 0 0 2px 2px;
     }
+    .stat-box.s1::after { background: var(--sf-teal); }
+    .stat-box.s2::after { background: var(--sf-blue); }
+    .stat-box.s3::after { background: var(--sf-navy); }
+    .stat-box.s4::after { background: var(--sf-amber); }
 
-    .stat-box .stat-label {
-      font-size: 11px;
-      color: var(--sf-muted);
-      margin-top: 5px;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-    }
-
-    /* ── Section heading ─────────────────────────────────────────────── */
-    .section-heading {
-      padding: 28px 40px 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .section-heading .icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: var(--sf-blue);
+    .stat-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      margin: 0 auto 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
+    }
+    .stat-box.s1 .stat-icon { background: #E0F5F4; }
+    .stat-box.s2 .stat-icon { background: #DDEEFB; }
+    .stat-box.s3 .stat-icon { background: #E0E8F4; }
+    .stat-box.s4 .stat-icon { background: #FFF0D9; }
+
+    .stat-icon svg { width: 17px; height: 17px; }
+    .stat-box.s1 .stat-icon svg { fill: var(--sf-teal); }
+    .stat-box.s2 .stat-icon svg { fill: var(--sf-blue); }
+    .stat-box.s3 .stat-icon svg { fill: var(--sf-navy); }
+    .stat-box.s4 .stat-icon svg { fill: var(--sf-amber); }
+
+    .stat-num {
+      font-size: 27px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .stat-box.s1 .stat-num { color: var(--sf-teal); }
+    .stat-box.s2 .stat-num { color: var(--sf-blue); }
+    .stat-box.s3 .stat-num { color: var(--sf-navy); }
+    .stat-box.s4 .stat-num { color: var(--sf-amber); }
+
+    .stat-label {
+      font-size: 10.5px;
+      color: var(--sf-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.4;
     }
 
-    .section-heading .icon svg { fill: white; width: 16px; height: 16px; }
-
-    .section-heading h2 {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--sf-navy);
+    /* ─── SECTION BANNERS ────────────────────────────────────────────── */
+    .section-banner {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 44px;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* ── Win cards ───────────────────────────────────────────────────── */
-    .cards {
-      padding: 16px 40px 28px;
+    .section-banner.blue  { background: linear-gradient(to right, #EAF3FC, #F5F9FE); border-top: 3px solid var(--sf-blue); }
+    .section-banner.teal  { background: linear-gradient(to right, #E5F7F6, #F2FBFB); border-top: 3px solid var(--sf-teal); }
+    .section-banner.amber { background: linear-gradient(to right, #FDF2E4, #FFFAF5); border-top: 3px solid var(--sf-amber); }
+
+    .win-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: white;
+    }
+    .win-badge .badge-label { font-size: 8px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; line-height: 1; }
+    .win-badge .badge-num   { font-size: 18px; font-weight: 800; line-height: 1.1; }
+
+    .section-banner.blue  .win-badge { background: var(--sf-blue); }
+    .section-banner.teal  .win-badge { background: var(--sf-teal); }
+    .section-banner.amber .win-badge { background: var(--sf-amber); }
+
+    .banner-text h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--sf-navy);
+      line-height: 1.25;
+    }
+    .banner-text p {
+      font-size: 11.5px;
+      color: var(--sf-muted);
+      margin-top: 2px;
+    }
+
+    .banner-watermark {
+      position: absolute;
+      right: 30px;
+      opacity: 0.06;
+    }
+
+    /* ─── CARDS ──────────────────────────────────────────────────────── */
+    .cards {
+      padding: 14px 44px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
     }
 
     .card {
       border: 1px solid var(--sf-grey-border);
-      border-radius: 8px;
+      border-radius: 10px;
       overflow: hidden;
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.055);
     }
+
+    /* left accent bar */
+    .card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      border-radius: 10px 0 0 10px;
+    }
+    .card.rajan::before   { background: linear-gradient(to bottom, var(--sf-blue), var(--sf-blue-dark)); }
+    .card.manjari::before { background: linear-gradient(to bottom, var(--sf-teal), #038A80); }
+    .card.kalyan::before  { background: linear-gradient(to bottom, var(--sf-amber), #B55E00); }
 
     .card-header {
-      padding: 12px 18px;
+      padding: 13px 18px 13px 22px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 11px;
     }
+    .card.rajan   .card-header { background: linear-gradient(to right, #EAF3FC, #F7FBFF); }
+    .card.manjari .card-header { background: linear-gradient(to right, #E5F7F6, #F3FBFB); }
+    .card.kalyan  .card-header { background: linear-gradient(to right, #FDF2E4, #FFFCF8); }
 
-    .card-header .author-chip {
-      font-size: 11px;
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11.5px;
       font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 12px;
+      color: white;
+      flex-shrink: 0;
     }
+    .card.rajan   .avatar { background: var(--sf-blue); }
+    .card.manjari .avatar { background: var(--sf-teal); }
+    .card.kalyan  .avatar { background: var(--sf-amber); }
 
-    .card-header .cloud-tag {
-      font-size: 11px;
-      color: var(--sf-muted);
-      font-weight: 500;
-    }
-
-    .card-header .card-title {
-      margin-left: auto;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--sf-blue-dark);
-      text-align: right;
-    }
-
-    /* author colour theming */
-    .card.rajan   .card-header { background: #EFF7FF; }
-    .card.rajan   .author-chip { background: #BFE0FB; color: #014486; }
-    .card.manjari .card-header { background: #EDFBFA; }
-    .card.manjari .author-chip { background: #B3EDE9; color: #015C56; }
-    .card.kalyan  .card-header { background: #FFF5E9; }
-    .card.kalyan  .author-chip { background: #FFD9A0; color: #7A4400; }
+    .author-info { flex: 1; min-width: 0; }
+    .author-name { font-size: 13px; font-weight: 700; color: var(--sf-navy); }
+    .author-meta { font-size: 11px; color: var(--sf-muted); }
+    .card-date   { font-size: 11px; font-weight: 600; color: var(--sf-muted); white-space: nowrap; }
 
     .card-body {
-      padding: 14px 18px 16px;
+      padding: 16px 18px 18px 22px;
+      background: white;
+      position: relative;
     }
 
-    .card-body .rows {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .rows { display: flex; flex-direction: column; gap: 12px; }
 
-    .card-row {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-    }
+    .card-row { display: flex; gap: 10px; align-items: flex-start; }
 
-    .card-row .row-label {
+    .row-label {
       flex-shrink: 0;
-      width: 90px;
-      font-size: 10px;
+      width: 98px;
+      font-size: 9.5px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--sf-muted);
-      padding-top: 2px;
+      letter-spacing: 0.9px;
+      padding-top: 3px;
+      line-height: 1.3;
     }
+    .card.rajan   .row-label { color: var(--sf-blue); }
+    .card.manjari .row-label { color: var(--sf-teal); }
+    .card.kalyan  .row-label { color: var(--sf-amber); }
 
-    .card-row .row-text {
+    .row-text {
       font-size: 13.5px;
       color: var(--sf-text);
       flex: 1;
+      line-height: 1.68;
     }
 
-    /* metrics pills */
+    /* quote callout */
+    .quote-callout {
+      margin-top: 9px;
+      padding: 9px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-style: italic;
+      line-height: 1.6;
+    }
+    .card.manjari .quote-callout { background: #EDF8F7; border-left: 3px solid var(--sf-teal); color: #024E49; }
+
+    /* metric pills */
     .metrics {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
+      gap: 7px;
+      margin-top: 10px;
     }
 
     .metric-pill {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      background: var(--sf-blue);
-      color: white;
       border-radius: 20px;
       padding: 4px 12px;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 600;
     }
 
-    .metric-pill.teal  { background: var(--sf-teal); }
-    .metric-pill.navy  { background: var(--sf-navy); }
-    .metric-pill.amber { background: #B85C00; }
+    /* soft pill */
+    .card.rajan   .metric-pill { background: #DDEEFB; color: #014486; }
+    .card.manjari .metric-pill { background: #DCF0EF; color: #024E49; }
+    .card.kalyan  .metric-pill { background: #FDEBD0; color: #7A3500; }
 
-    /* divider */
-    .divider {
-      height: 1px;
-      background: var(--sf-grey-border);
-      margin: 0 40px;
-    }
+    /* solid accent pill */
+    .metric-pill.solid { color: white; }
+    .card.rajan   .metric-pill.solid { background: var(--sf-blue); }
+    .card.manjari .metric-pill.solid { background: var(--sf-teal); }
+    .card.kalyan  .metric-pill.solid { background: var(--sf-amber); }
 
-    /* ── Footer ──────────────────────────────────────────────────────── */
+    /* ─── FOOTER ─────────────────────────────────────────────────────── */
     .footer {
-      background: var(--sf-navy);
-      color: rgba(255,255,255,0.7);
-      padding: 22px 40px;
-      font-size: 12px;
+      background: linear-gradient(145deg, #010E22, var(--sf-navy) 60%, #01529D);
+      color: rgba(255,255,255,0.62);
+      padding: 26px 44px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+      font-size: 12px;
     }
 
+    .footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23ffffff' opacity='0.05'/%3E%3C/svg%3E");
+    }
+
+    .footer-left { position: relative; z-index: 1; }
     .footer strong { color: white; }
-    .footer .sf-logo {
+
+    .sf-brand {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
       font-size: 13px;
       font-weight: 700;
-      color: white;
       letter-spacing: 0.5px;
     }
   </style>
@@ -294,56 +445,119 @@
 <body>
 <div class="wrapper">
 
-  <!-- HEADER -->
+  <!-- ═══ HEADER ═══════════════════════════════════════════════════════ -->
   <div class="header">
-    <div class="eyebrow">Own Our Narrative · AI Delivery Wins Post Series</div>
-    <h1>AI Delivery Wins<br>June 2026</h1>
-    <div class="sub">Enterprise AI Delivery &amp; Transformation Org · APAC</div>
-    <div class="meta">
-      <span class="meta-chip">5 Wins This Month</span>
-      <span class="meta-chip">3 Contributors</span>
-      <span class="meta-chip">HCC · Service Cloud · T&amp;P APAC</span>
+
+    <!-- decorative AI network SVG (top-right watermark) -->
+    <svg class="header-deco" width="300" height="240" viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="240" cy="40"  r="12" fill="white"/>
+      <circle cx="180" cy="90"  r="8"  fill="white"/>
+      <circle cx="260" cy="110" r="10" fill="white"/>
+      <circle cx="210" cy="160" r="6"  fill="white"/>
+      <circle cx="150" cy="130" r="9"  fill="white"/>
+      <circle cx="280" cy="180" r="7"  fill="white"/>
+      <circle cx="120" cy="60"  r="5"  fill="white"/>
+      <circle cx="90"  cy="180" r="8"  fill="white"/>
+      <circle cx="50"  cy="110" r="6"  fill="white"/>
+      <line x1="240" y1="40"  x2="180" y2="90"  stroke="white" stroke-width="1.5"/>
+      <line x1="240" y1="40"  x2="260" y2="110" stroke="white" stroke-width="1.5"/>
+      <line x1="180" y1="90"  x2="260" y2="110" stroke="white" stroke-width="1.5"/>
+      <line x1="180" y1="90"  x2="150" y2="130" stroke="white" stroke-width="1.5"/>
+      <line x1="260" y1="110" x2="210" y2="160" stroke="white" stroke-width="1.5"/>
+      <line x1="260" y1="110" x2="280" y2="180" stroke="white" stroke-width="1.5"/>
+      <line x1="150" y1="130" x2="210" y2="160" stroke="white" stroke-width="1.5"/>
+      <line x1="150" y1="130" x2="90"  y2="180" stroke="white" stroke-width="1.5"/>
+      <line x1="120" y1="60"  x2="180" y2="90"  stroke="white" stroke-width="1.5"/>
+      <line x1="120" y1="60"  x2="50"  y2="110" stroke="white" stroke-width="1.5"/>
+      <line x1="50"  y1="110" x2="90"  y2="180" stroke="white" stroke-width="1.5"/>
+      <line x1="210" y1="160" x2="280" y2="180" stroke="white" stroke-width="1.5"/>
+    </svg>
+
+    <div class="header-content">
+      <div class="eyebrow">
+        <span class="eyebrow-line"></span>
+        Own Our Narrative &nbsp;·&nbsp; AI Delivery Wins Post Series
+      </div>
+      <h1>AI Delivery <em>Wins</em><br>June 2026</h1>
+      <div class="sub">Enterprise AI Delivery &amp; Transformation Org &nbsp;·&nbsp; APAC</div>
+      <div class="meta">
+        <span class="meta-chip">5 Wins This Month</span>
+        <span class="meta-chip">3 Contributors</span>
+        <span class="meta-chip">HCC &nbsp;·&nbsp; Service Cloud &nbsp;·&nbsp; T&amp;P APAC</span>
+      </div>
     </div>
+
+    <!-- wave separator -->
+    <svg class="header-wave" viewBox="0 0 780 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 48 L0 24 Q195 0 390 24 Q585 48 780 18 L780 48 Z" fill="#ffffff"/>
+    </svg>
   </div>
 
-  <!-- INTRO -->
-  <div class="intro-banner">
-    Our AI Delivery Leads are turning real delivery work into org-wide proof points. These are the stories that make our impact visible — and leadership takes notice.
+  <!-- ═══ INTRO ════════════════════════════════════════════════════════ -->
+  <div class="intro">
+    <p>Our AI Delivery Leads are turning real delivery work into org-wide proof points. These are the stories that make our impact visible — from engineering floors in Hyderabad and Bangalore to leadership forums across T&amp;P India.</p>
   </div>
 
-  <!-- STATS ROW -->
+  <!-- ═══ STATS ════════════════════════════════════════════════════════ -->
   <div class="stats-row">
-    <div class="stat-box">
+    <div class="stat-box s1">
+      <div class="stat-icon">
+        <!-- checkmark icon -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      </div>
       <div class="stat-num">100%</div>
       <div class="stat-label">HCC Planned Release<br>Adoption · R264</div>
     </div>
-    <div class="stat-box">
+    <div class="stat-box s2">
+      <div class="stat-icon">
+        <!-- chart-bar icon -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="12" width="4" height="8" rx="1"/><rect x="10" y="8" width="4" height="12" rx="1"/><rect x="17" y="4" width="4" height="16" rx="1"/></svg>
+      </div>
       <div class="stat-num">96.3%</div>
       <div class="stat-label">AI Tool Adoption<br>HCC · Q1 FY27</div>
     </div>
-    <div class="stat-box">
+    <div class="stat-box s3">
+      <div class="stat-icon">
+        <!-- trending up icon -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><polyline points="17 6 23 6 23 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      </div>
       <div class="stat-num">+32%</div>
       <div class="stat-label">PRs per Developer<br>Service Cloud</div>
     </div>
-    <div class="stat-box">
+    <div class="stat-box s4">
+      <div class="stat-icon">
+        <!-- users icon -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" fill="none"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      </div>
       <div class="stat-num">~40</div>
       <div class="stat-label">EMs Enabled<br>AI Flow Optimizer</div>
     </div>
   </div>
 
-  <!-- WIN 1: RAJAN -->
-  <div class="section-heading">
-    <div class="icon">
-      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7L2 14l10 5 10-5-10-5z"/></svg>
+  <!-- ═══ WIN 1: RAJAN ═════════════════════════════════════════════════ -->
+  <div class="section-banner blue">
+    <div class="win-badge">
+      <span class="badge-label">Win</span>
+      <span class="badge-num">#1</span>
     </div>
-    <h2>Win #1 — AI Flow Optimizer Workshop</h2>
+    <div class="banner-text">
+      <h2>AI Flow Optimizer Workshop</h2>
+      <p>Rajan Julka &nbsp;·&nbsp; T&amp;P APAC &nbsp;·&nbsp; EMpact Program · May 2026</p>
+    </div>
+    <!-- watermark -->
+    <svg class="banner-watermark" width="70" height="70" viewBox="0 0 24 24" fill="var(--sf-blue)" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L2 7l10 5 10-5-10-5zm0 7L2 14l10 5 10-5-10-5zm0 7l-8-4 8 4 8-4-8 4z"/>
+    </svg>
   </div>
   <div class="cards">
     <div class="card rajan">
       <div class="card-header">
-        <span class="author-chip">Rajan Julka</span>
-        <span class="cloud-tag">T&amp;P APAC · EMpact Program</span>
-        <span class="card-title">May 2026</span>
+        <div class="avatar">RJ</div>
+        <div class="author-info">
+          <div class="author-name">Rajan Julka</div>
+          <div class="author-meta">AI Delivery Lead &nbsp;·&nbsp; T&amp;P APAC</div>
+        </div>
+        <div class="card-date">May 2026</div>
       </div>
       <div class="card-body">
         <div class="rows">
@@ -360,9 +574,9 @@
             <span class="row-text">
               EMs who previously spent hours manually pulling delivery data now get their team's full flow dashboard in minutes — walking away with data-backed experiment designs directly tied to 3X productivity goals.
               <div class="metrics">
-                <span class="metric-pill">~40 EMs enabled</span>
-                <span class="metric-pill teal">Hours → Minutes</span>
-                <span class="metric-pill navy">Data-backed experiments</span>
+                <span class="metric-pill solid">~40 EMs enabled</span>
+                <span class="metric-pill">Hours &rarr; Minutes</span>
+                <span class="metric-pill">Data-backed experiments</span>
               </div>
             </span>
           </div>
@@ -371,23 +585,31 @@
     </div>
   </div>
 
-  <div class="divider"></div>
-
-  <!-- WIN 2 & 3: MANJARI -->
-  <div class="section-heading">
-    <div class="icon">
-      <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+  <!-- ═══ WINS 2 & 3: MANJARI ══════════════════════════════════════════ -->
+  <div class="section-banner teal">
+    <div class="win-badge">
+      <span class="badge-label">Wins</span>
+      <span class="badge-num">#2–3</span>
     </div>
-    <h2>Wins #2 &amp; #3 — HCC · Hyperscale Core CRM</h2>
+    <div class="banner-text">
+      <h2>HCC · Hyperscale Core CRM</h2>
+      <p>Manjari Kumar &nbsp;·&nbsp; AI Delivery Lead &nbsp;·&nbsp; Release Planning &amp; AI Champions Circle</p>
+    </div>
+    <svg class="banner-watermark" width="70" height="70" viewBox="0 0 24 24" fill="var(--sf-teal)" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    </svg>
   </div>
   <div class="cards">
 
-    <!-- Manjari Win 1: Release Planning Excellence -->
+    <!-- Manjari Win 1 -->
     <div class="card manjari">
       <div class="card-header">
-        <span class="author-chip">Manjari Kumar</span>
-        <span class="cloud-tag">HCC · Release Planning</span>
-        <span class="card-title">R264</span>
+        <div class="avatar">MK</div>
+        <div class="author-info">
+          <div class="author-name">Manjari Kumar</div>
+          <div class="author-meta">HCC · Release Planning Excellence</div>
+        </div>
+        <div class="card-date">R264</div>
       </div>
       <div class="card-body">
         <div class="rows">
@@ -402,9 +624,10 @@
           <div class="card-row">
             <span class="row-label">The Outcome</span>
             <span class="row-text">
-              Achieved 100% adoption of Planned Releases across all HCC teams for R264, sustained across every sprint. The resulting data quality and planning transparency enabled more accurate engineering productivity insights and directly enabled the development and deployment of the Release Planning Agent. <em>You can't measure what you don't track. You can't automate what you don't trust.</em>
+              Achieved 100% adoption of Planned Releases across all HCC teams for R264, sustained across every sprint. The resulting data quality and planning transparency enabled more accurate engineering productivity insights and directly enabled the development and deployment of the Release Planning Agent.
+              <div class="quote-callout">You can't measure what you don't track. You can't automate what you don't trust.</div>
               <div class="metrics">
-                <span class="metric-pill teal">100% Planned Release · R264</span>
+                <span class="metric-pill solid">100% Planned Release · R264</span>
                 <span class="metric-pill">Release Planning Agent unlocked</span>
               </div>
             </span>
@@ -413,12 +636,15 @@
       </div>
     </div>
 
-    <!-- Manjari Win 2: AI Champions Circle -->
+    <!-- Manjari Win 2 -->
     <div class="card manjari">
       <div class="card-header">
-        <span class="author-chip">Manjari Kumar</span>
-        <span class="cloud-tag">HCC · AI Champions Circle</span>
-        <span class="card-title">Q1 FY27</span>
+        <div class="avatar">MK</div>
+        <div class="author-info">
+          <div class="author-name">Manjari Kumar</div>
+          <div class="author-meta">HCC · AI Champions Circle</div>
+        </div>
+        <div class="card-date">Q1 FY27</div>
       </div>
       <div class="card-body">
         <div class="rows">
@@ -435,9 +661,9 @@
             <span class="row-text">
               AI tool adoption jumped 9.5 points in one quarter, with a simultaneous surge in developer output — proving that structured, accountable adoption programs deliver compounding results.
               <div class="metrics">
-                <span class="metric-pill teal">86.8% → 96.3% AI Adoption</span>
+                <span class="metric-pill solid">86.8% &rarr; 96.3% AI Adoption</span>
                 <span class="metric-pill">+30% work items per developer</span>
-                <span class="metric-pill navy">18 Champions · AMER + APAC</span>
+                <span class="metric-pill">18 Champions · AMER + APAC</span>
               </div>
             </span>
           </div>
@@ -447,23 +673,31 @@
 
   </div>
 
-  <div class="divider"></div>
-
-  <!-- WIN 4 & 5: KALYAN -->
-  <div class="section-heading">
-    <div class="icon">
-      <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+  <!-- ═══ WINS 4 & 5: KALYAN ═══════════════════════════════════════════ -->
+  <div class="section-banner amber">
+    <div class="win-badge">
+      <span class="badge-label">Wins</span>
+      <span class="badge-num">#4–5</span>
     </div>
-    <h2>Wins #4 &amp; #5 — Service Cloud · ITSM</h2>
+    <div class="banner-text">
+      <h2>Service Cloud · ITSM</h2>
+      <p>Kalyan Vandana &nbsp;·&nbsp; AI Delivery Lead Senior &nbsp;·&nbsp; Scrum Agent &amp; 3X AI Adoption</p>
+    </div>
+    <svg class="banner-watermark" width="70" height="70" viewBox="0 0 24 24" fill="var(--sf-amber)" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+    </svg>
   </div>
   <div class="cards">
 
-    <!-- Kalyan Win 1: Scrum Agent -->
+    <!-- Kalyan Win 1 -->
     <div class="card kalyan">
       <div class="card-header">
-        <span class="author-chip">Kalyan Vandana</span>
-        <span class="cloud-tag">Service Cloud · ITSM · Scrum Agent</span>
-        <span class="card-title">May 27 · Tech COO Town Hall</span>
+        <div class="avatar">KV</div>
+        <div class="author-info">
+          <div class="author-name">Kalyan Vandana</div>
+          <div class="author-meta">Service Cloud · ITSM · Scrum Agent</div>
+        </div>
+        <div class="card-date">May 27 · Tech COO Town Hall</div>
       </div>
       <div class="card-body">
         <div class="rows">
@@ -480,7 +714,7 @@
             <span class="row-text">
               Standup prep reduced from 15–20 minutes to minutes. The Scrum Agent was featured at the Tech COO Town Hall (May 27) as a flagship 3X productivity example — org-wide leadership visibility for APAC AI Delivery.
               <div class="metrics">
-                <span class="metric-pill amber">15–20 min → Minutes</span>
+                <span class="metric-pill solid">15–20 min &rarr; Minutes</span>
                 <span class="metric-pill">Featured · Tech COO Town Hall</span>
               </div>
             </span>
@@ -489,12 +723,15 @@
       </div>
     </div>
 
-    <!-- Kalyan Win 2: Service Cloud 3X -->
+    <!-- Kalyan Win 2 -->
     <div class="card kalyan">
       <div class="card-header">
-        <span class="author-chip">Kalyan Vandana</span>
-        <span class="cloud-tag">Service Cloud · 3X AI Adoption</span>
-        <span class="card-title">Oct 2025 → Apr 2026</span>
+        <div class="avatar">KV</div>
+        <div class="author-info">
+          <div class="author-name">Kalyan Vandana</div>
+          <div class="author-meta">Service Cloud · 3X AI Adoption</div>
+        </div>
+        <div class="card-date">Oct 2025 &rarr; Apr 2026</div>
       </div>
       <div class="card-body">
         <div class="rows">
@@ -509,11 +746,11 @@
           <div class="card-row">
             <span class="row-label">The Outcome</span>
             <span class="row-text">
-              Service Cloud reached 100% AI tool adoption. Developer throughput surged with measurable velocity gains tracked across the full org — surfaced at the Tech COO Town Hall as org-wide proof points.
+              Service Cloud reached 100% AI tool adoption. Developer throughput surged with measurable velocity gains — surfaced at the Tech COO Town Hall as org-wide proof points.
               <div class="metrics">
-                <span class="metric-pill amber">100% AI Tool Adoption</span>
+                <span class="metric-pill solid">100% AI Tool Adoption</span>
                 <span class="metric-pill">+32% PRs per Developer</span>
-                <span class="metric-pill navy">+44% Reviews per Developer</span>
+                <span class="metric-pill">+44% Reviews per Developer</span>
               </div>
             </span>
           </div>
@@ -523,13 +760,19 @@
 
   </div>
 
-  <!-- FOOTER -->
+  <!-- ═══ FOOTER ════════════════════════════════════════════════════════ -->
   <div class="footer">
-    <div>
-      <strong>AI Delivery Wins Post Series</strong> · Part of <strong>Own Our Narrative</strong><br>
+    <div class="footer-left">
+      <strong>AI Delivery Wins Post Series</strong> &nbsp;·&nbsp; Part of <strong>Own Our Narrative</strong><br>
       Enterprise AI Delivery &amp; Transformation Org
     </div>
-    <div class="sf-logo">Salesforce</div>
+    <div class="sf-brand">
+      <!-- Salesforce cloud SVG -->
+      <svg class="sf-cloud-icon" width="28" height="20" viewBox="0 0 400 270" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M166 60c15-33 49-56 88-56 37 0 70 20 88 51 12-6 25-9 39-9 50 0 90 40 90 90s-40 90-90 90H90C40 226 0 186 0 136c0-47 36-85 83-90 8-47 49-83 98-83 21 0 41 6 58 17-17 17-28 40-28 66 0 8 1 16 3 23-17 2-30 16-30 34 0 19 15 34 34 34h34c-4-9-6-19-6-29 0-44 37-78 81-78 15 0 29 4 41 11z"/>
+      </svg>
+      Salesforce
+    </div>
   </div>
 
 </div>
